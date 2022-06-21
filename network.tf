@@ -1,3 +1,5 @@
+provider "aws" {
+    region = var.region
 resource "aws_vpc" "patlolla's" {
     cidr_block      = var.network_cidr
     tags            = {
@@ -13,12 +15,12 @@ resource "aws_subnet" "subnets" {
         Name        = var.subnet_name_tags[count.index]
     } 
     availability_zone = format("${var.region}%s", count.index%2==0?"a":"b")
-    vpc_id          = aws_vpc.ntier.id 
+    vpc_id          = aws_vpc.patlolla.id 
 }
 
 
-resource "aws_internet_gateway" "ntier_igw" {
-    vpc_id          = aws_vpc.ntier.id
+resource "aws_internet_gateway" "patlolla_igw" {
+    vpc_id          = aws_vpc.patlolla.id
     tags            = {
         Name        = "patlolla-igw"
     } 
@@ -31,7 +33,7 @@ resource "aws_s3_bucket" "my_bucket" {
 }
 
 resource "aws_security_group" "websg" {
-    vpc_id              = aws_vpc.ntier.id
+    vpc_id              = aws_vpc.patlolla.id
     description         = local.default_description
     ingress {
         from_port       = local.ssh_port
@@ -59,7 +61,7 @@ resource "aws_security_group" "websg" {
 }
 
 resource "aws_security_group" "appsg" {
-    vpc_id              = aws_vpc.ntier.id
+    vpc_id              = aws_vpc.patlolla.id
     description         = local.default_description
     ingress {
         from_port       = local.ssh_port
