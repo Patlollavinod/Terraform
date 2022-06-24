@@ -1,11 +1,11 @@
-provider "aws" {
-    region = var.region
-resource "aws_vpc" "patlolla's" {
-    cidr_block      = var.network_cidr
-    tags            = {
-        Name        = "patlolla"
-    } 
-}   
+# provider "aws" {
+#     region = var.region
+# resource "aws_vpc" "patlolla's" {
+#     cidr_block      = var.network_cidr
+#     tags            = {
+#         Name        = "patlolla"
+#     } 
+# }   
 # resource "aws_lb_target_group" "my_target_group" {
 #     health_check {
 #         interval =              10
