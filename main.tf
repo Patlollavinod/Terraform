@@ -47,7 +47,7 @@ resource "aws_launch_configuration" "vin-conf" {
 #                 systemctl enable nginx
 #                 mkdir /var/www/html
 #                 echo "This is from launch configuration-2" > /var/www/html/index.html
-                EOF
+#                 EOF
  lifecycle {
     create_before_destroy = true
   }
