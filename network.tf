@@ -6,7 +6,20 @@ resource "aws_vpc" "patlolla's" {
         Name        = "patlolla"
     } 
 }
-
+resource "aws_lb_target_group" "my_target_group" {
+    health_check {
+        interval =              10
+        path =                  "/index.html"
+        protocol =              "HTTP"
+        timeout =               5
+        healthy_threshold =     5
+        unhealthy_threshold =   2
+    }
+    name     = "tf-example-lb-tg"
+    port     = 80
+    protocol = "HTTP"
+    vpc_id   = var.vpc_id
+}
 
 resource "aws_subnet" "subnets" {
     count           = length(var.subnet_name_tags) 
