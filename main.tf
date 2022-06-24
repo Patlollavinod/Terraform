@@ -39,15 +39,15 @@ resource "aws_launch_configuration" "vin-conf" {
   instance_type = "t2.micro"
   security_groups = var.vpc_security_group
   associate_public_ip_address = true
-#    user_data = <<-EOF
-#                 #!/bin/bash
-#                 apt-get update -y
-#                 apt-get install nginx -y
-#                 systemctl start nginx
-#                 systemctl enable nginx
-#                 mkdir /var/www/html
-#                 echo "This is from launch configuration-2" > /var/www/html/index.html
-#                 EOF
+   user_data = <<-EOF
+                #!/bin/bash
+                apt-get update -y
+                apt-get install nginx -y
+                systemctl start nginx
+                systemctl enable nginx
+                mkdir /var/www/html
+                echo "This is from launch configuration-2" > /var/www/html/index.html
+                EOF
  lifecycle {
     create_before_destroy = true
   }
