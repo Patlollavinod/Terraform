@@ -1,6 +1,7 @@
 provider "aws" {
     region = var.region
-resource "aws_vpc" "patlolla's" {
+resource "aws_vpc" "patlolla" 
+    {
     cidr_block      = var.network_cidr
     tags            = {
         Name        = "patlolla"
