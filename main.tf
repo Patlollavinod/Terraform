@@ -1,6 +1,6 @@
-# provider "aws" {
-#      region = "ap-south-1"
- }
+#  provider "aws" {
+#       region = "ap-south-1"
+#  }
 resource "aws_lb_target_group" "my_target_group" {
     health_check {
         interval =              10
