@@ -121,5 +121,5 @@ resource "aws_route_table" "privatert" {
 resource "aws_route_table_association" "associations" {
     count               = length(aws_subnet.subnets)
     subnet_id           = aws_subnet.subnets[count.index].id
-    route_table_id      = contains(var.public_subnets, lookup(aws_subnet.subnets[count.index].tags_all, "Name", ""))?aws_route_table.publicrt.id :  aws_route_table.privatrt
+    route_table_id      = contains(var.public_subnets, lookup(aws_subnet.subnets[count.index].tags_all, "Name", ""))?aws_route_table.publicrt :  aws_route_table.privatrt
 }
