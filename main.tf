@@ -1,6 +1,6 @@
- provider "aws" {
-      region = "ap-south-1"
- }
+provider "aws" {
+  region = "ap-south-1"
+}
 resource "aws_instance" "app" {
     instance_type       = "t2.micro"
     ami                 = "ami-068257025f72f470d"
