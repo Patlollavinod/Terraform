@@ -99,10 +99,6 @@ resource "aws_security_group" "appsg" {
     } 
 
 }
-resource "aws_route_table_association" "associations" {
-    count               = length(aws_subnet.subnets)
-    subnet_id           = aws_subnet.subnets[count.index].id
-    route_table_id      = contains(var.public_subnets, lookup(aws_subnet.subnets[count.index].tags_all, "Name", ""))?aws_route_table.public.id :  aws_route_table.private.id
 } 
 resource "aws_route_table" "publicrt" {
     vpc_id          =  aws_vpc.patlolla.id
@@ -122,3 +118,8 @@ resource "aws_route_table" "privatert" {
         Name        = "Private RT"
     } 
 }
+
+resource "aws_route_table_association" "associations" {
+    count               = length(aws_subnet.subnets)
+    subnet_id           = aws_subnet.subnets[count.index].id
+    route_table_id      = contains(var.public_subnets, lookup(aws_subnet.subnets[count.index].tags_all, "Name", ""))?aws_route_table.public.id :  aws_route_table.privat
