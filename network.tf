@@ -99,7 +99,6 @@ resource "aws_security_group" "appsg" {
     } 
 
 }
-} 
 resource "aws_route_table" "publicrt" {
     vpc_id          =  aws_vpc.patlolla.id
     route {
