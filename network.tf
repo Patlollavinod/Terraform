@@ -108,7 +108,7 @@ resource "aws_route_table" "publicrt" {
     vpc_id          =  aws_vpc.patlolla.id
     route {
         cidr_block  = local.any_where
-        gateway_id  = aws_internet_gateway.ntier_igw.id
+        gateway_id  = aws_internet_gateway.patlolla_igw.id
     }
     tags            = {
         Name        = "Public RT"
