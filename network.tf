@@ -25,13 +25,9 @@ resource "aws_subnet" "subnets" {
     tags            = {
         Name        = var.subnet_name_tags[count.index]
     }
-}
-
     availability_zone = format("${var.region}%s", count.index%2==0?"a":"b")
     vpc_id          = aws_vpc.patlolla.id 
 }
-}
-
 
 resource "aws_internet_gateway" "patlolla_igw" {
     vpc_id          = aws_vpc.patlolla.id
