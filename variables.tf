@@ -19,7 +19,7 @@ variable "subnet_name_tags" {
 #     type    = string
 #     default = "patlolla-sample"
 
-} 
+#} 
 variable "aws_region" {
     default = "ap-south-1"
 }
