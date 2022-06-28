@@ -39,10 +39,10 @@ resource "aws_internet_gateway" "patlolla_igw" {
 
 }
 
-resource "aws_s3_bucket" "my_bucket" {
-    bucket          = var.bucket_name 
+#resource "aws_s3_bucket" "my_bucket" {
+   # bucket          = var.bucket_name 
 
-}
+#}
 
 resource "aws_security_group" "websg" {
     vpc_id              = aws_vpc.patlolla.id
