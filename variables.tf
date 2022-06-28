@@ -17,7 +17,7 @@ variable "subnet_name_tags" {
 
 variable "bucket_name" {
     type    = string
-    default = "patlolla_sample"
+    default = "patlolla-sample"
 
 } 
 variable "aws_region" {
