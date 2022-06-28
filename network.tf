@@ -146,3 +146,4 @@ resource "aws_route_table" "privatert" {
   #subnet_id      = "${var.subnet_name_tags[count.index]}"
   #route_table_id = "${aws_route_table.bar.id}"
 #}
+ 
