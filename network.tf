@@ -18,7 +18,7 @@ resource "aws_vpc" "patlolla" {
 #     port     = 80
 #     protocol = "HTTP"
 #     vpc_id   = var.vpc_id
- }
+ #}
 resource "aws_subnet" "subnets" {
     count           = length(var.subnet_name_tags) 
     cidr_block      = cidrsubnet(var.network_cidr,8,count.index)
