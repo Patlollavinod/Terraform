@@ -18,13 +18,14 @@ resource "aws_vpc" "patlolla" {
 #     port     = 80
 #     protocol = "HTTP"
 #     vpc_id   = var.vpc_id
- }#
+ }
 resource "aws_subnet" "subnets" {
     count           = length(var.subnet_name_tags) 
     cidr_block      = cidrsubnet(var.network_cidr,8,count.index)
     tags            = {
         Name        = var.subnet_name_tags[count.index]
-    } 
+    }
+}
 
     availability_zone = format("${var.region}%s", count.index%2==0?"a":"b")
     vpc_id          = aws_vpc.patlolla.id 
