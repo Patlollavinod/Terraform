@@ -116,7 +116,7 @@ resource "aws_route_table" "privatert" {
     } 
 }
 #resource "aws_route_table_association" "associate_route_table_to_publicrt" {
- # subnet_id = aws_subnet.Public RT.id
+ # subnet_id = aws_subnet.Public-1.id
 
   #route_table_id = aws_route_table.publicrt.id
 
