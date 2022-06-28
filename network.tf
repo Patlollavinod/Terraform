@@ -121,7 +121,7 @@ resource "aws_route_table" "privatert" {
 
 resource "aws_route" "internet_access" {
 
-  route_table_id         = aws_vpc.patlolla.aws_route_table.privatert.id
+  route_table_id         = aws_route_table.privatert.id
 
   destination_cidr_block =  local.any_where
 
