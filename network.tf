@@ -19,7 +19,6 @@ resource "aws_vpc" "patlolla" {
 #     protocol = "HTTP"
 #     vpc_id   = var.vpc_id
 # }
-
 resource "aws_subnet" "subnets" {
     count           = length(var.subnet_name_tags) 
     cidr_block      = cidrsubnet(var.network_cidr,8,count.index)
@@ -119,14 +118,13 @@ resource "aws_route_table" "privatert" {
 }
 resource "aws_route_table_association" "associate_route_table_to_publicrt" {
 
-  #depends_on = [
+  depends_on = [
 
-     # aws_subnet.public_subnet-1,
+      aws_subnet.Public RT,
 
-      #aws_route_table.public_rt,
+      aws_route_table.publicrt,
 
-  ]#
-
+  ]
   subnet_id = aws_subnet.Public RT.id
 
   route_table_id = aws_route_table.publicrt.id
