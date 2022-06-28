@@ -138,7 +138,7 @@ resource "aws_route" "internet_access" {
  # gateway_id     = aws_internet_gateway.patlolla_igw.id
   #route_table_id = aws_route_table.publicrt.id
 #}
-resource "aws_route_table_association" "a" {
-  subnet_id      = "${var.subnet_name_tags[count.index]}"
-  route_table_id = "${aws_route_table.bar.id}"
-}
+#resource "aws_route_table_association" "a" {
+  #subnet_id      = "${var.subnet_name_tags[count.index]}"
+  #route_table_id = "${aws_route_table.bar.id}"
+#}
