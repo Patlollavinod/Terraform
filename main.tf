@@ -5,7 +5,10 @@ resource "aws_instance" "app" {
     instance_type       = "t2.micro"
     ami                 = "ami-068257025f72f470d"
     availability_zone   = "ap-south-1a"
-    tag _name           = "p_server"
+    tags = {
+    Name        = "Test_server"
+    
+  }
 }
 resource "aws_lb_target_group" "my_target_group" {
     health_check {
