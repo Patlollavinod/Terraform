@@ -123,7 +123,7 @@ resource "aws_route_table" "privatert" {
     #subnet_id           = aws_subnet.subnets[count.index].id
     #route_table_id      = contains(var.public_subnets, lookup(aws_subnet.subnets[count.index].tags_all, "Name", ""))?aws_route_table.publicrt :  aws_route_table.privatrt
 #}
-resource "aws_route_table_association" "b" {
-  gateway_id     = "aws_internet_gateway.patlolla_igw.id"
+resource "aws_route_table_association" "publicrt" {
+  gateway_id     = aws_internet_gateway.patlolla_igw.id
   route_table_id = aws_route_table.publicrt.id
 }
