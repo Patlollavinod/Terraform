@@ -117,11 +117,11 @@ resource "aws_route_table" "privatert" {
         Name        = "Private RT"
     } 
 }
- Route the public subnet traffic through the IGW
+# Route the public subnet traffic through the IGW
 
 resource "aws_route" "internet_access" {
 
-  route_table_id         = aws_vpc.patlolla.id
+  route_table_id         = aws_vpc.patlolla.aws_route_table.privatert.id
 
   destination_cidr_block =  local.any_where
 
