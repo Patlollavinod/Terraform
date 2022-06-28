@@ -117,13 +117,28 @@ resource "aws_route_table" "privatert" {
         Name        = "Private RT"
     } 
 }
+ Route the public subnet traffic through the IGW
 
-#resource "aws_route_table_association" "associations" {
-    #count               = length(aws_subnet.subnets)
+resource "aws_route" "internet_access" {
+
+  route_table_id         = aws_vpc.patlolla.id
+
+  destination_cidr_block =  local.any_where
+
+  gateway_id             = aws_internet_gateway.patlolla_igw.id
+
+}
+
+#resource "aws_route_table_association" "associations" "publicrt" {
+   # count               = length(aws_subnet.subnets)
     #subnet_id           = aws_subnet.subnets[count.index].id
     #route_table_id      = contains(var.public_subnets, lookup(aws_subnet.subnets[count.index].tags_all, "Name", ""))?aws_route_table.publicrt :  aws_route_table.privatrt
 #}
-resource "aws_route_table_association" "publicrt" {
-  gateway_id     = aws_internet_gateway.patlolla_igw.id
-  route_table_id = aws_route_table.publicrt.id
+#resource "aws_route_table_association" "publicrt" {
+ # gateway_id     = aws_internet_gateway.patlolla_igw.id
+  #route_table_id = aws_route_table.publicrt.id
+#}
+resource "aws_route_table_association" "a" {
+  subnet_id      = "${var.subnet_name_tags[count.index]}"
+  route_table_id = "${aws_route_table.bar.id}"
 }
