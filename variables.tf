@@ -11,7 +11,7 @@ variable "network_cidr" {
 
 variable "subnet_name_tags" {
     type    = list(string)
-    default = [ "Public-1", "Public-1", "private-1", "private-2",  ]
+    default = [ "Public-1", "private-1", "", "",  ]
 
 }
 
